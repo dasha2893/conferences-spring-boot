@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/layout}" lang="en">
+<head>
+    <title th:utext="${title}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="UTF-8">
+    <link th:href="@{/css/core.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class=my-overflow style="padding-top: 5rem; padding-left: 11rem;" layout:fragment="content">
+    <a class="btn btn-info btn-sm active" role="button"
+       aria-pressed="true" style="margin-left: 30rem;"
+       th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.spring.model.UserRoles).ADMIN.getValue()}"
+       th:href="@{/conferences/{conferenceId}/edit}">
+        Edit Conference Info
+    </a>
+    <form method="post"
+          th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.spring.model.UserRoles).ADMIN.getValue()}"
+          th:action="@{/conferences/{conferenceId}/delete(id=${conference.id})}"
+          style="margin-top: -31px; margin-left: 21rem;">
+        <button type="submit" class="btn btn-primary btn-sm">Delete Conference</button>
+    </form>
+    <a class="btn btn-info btn-sm" role="button"
+       aria-pressed="true" style="margin-left: 14.7rem;margin-top: -58px;"
+       th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.spring.model.UserRoles).ADMIN.getValue()}"
+       th:href="@{/conferences/{conferenceId}/participants}">
+        Participants
+    </a>
+    <a class="btn btn-success btn-sm" role="button"
+       aria-pressed="true" style="margin-left: 18.9rem;margin-top: -58px;"
+       th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.spring.model.UserRoles).ADMIN.getValue()}"
+       th:href="@{/exportFile?conferenceId={conferenceId}(conferenceId=${conference.id})}">
+        Export .csv
+    </a>
+    <h2 th:utext="${conference.title}"></h2><br/>
+    <p th:utext="${conference.shortDescription}"></p>
+    <div class="form-group row" style="margin-bottom: -1rem;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formLocationInput" class="col-sm-2 col-form-label">Location</label>
+        <div class="col-md-4" style="bottom: 2rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext" type="text"
+                   th:utext="${conference.location}" disabled id="formLocationInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: -1rem;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formRegistrTillInput" class="col-sm-2 col-form-label">Registration</label>
+        <div class="col-md-4" style="bottom: 2rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext" type="text"
+                   th:utext="${'До ' + #dates.day(conference.getEndRegistration()) + ' ' +
+                   #dates.monthName(conference.getEndRegistration()) + ' ' + #dates.year(conference.getEndRegistration())}"
+                   disabled
+                   id="formRegistrTillInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: -1rem;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formOrganaiserInput" class="col-sm-2 col-form-label">Organizer</label>
+        <div class="col-md-4" style="bottom: 2rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext" type="text"
+                   th:utext="${conference.organizer}" disabled id="formOrganaiserInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: -1rem;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formContactsInput" class="col-sm-2 col-form-label">Contacts</label>
+        <div class="col-md-6" style="bottom: 2rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext" type="text"
+                   th:utext="${conference.contacts}" disabled id="formContactsInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: -1rem;"
+         th:if="${userconf != null && userconf.getRole() != null}">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formUserRoleInput" class="col-sm-2 col-form-label">Your Role</label>
+        <div class="col-md-6" style="bottom: 2rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext" type="text"
+                   th:utext="${userconf.getRole().getValue()}"
+                   disabled
+                   id="formUserRoleInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: -1rem;"
+         th:if="${userconf != null && userconf.getRole() != null && userconf.reportPath != null}">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formReportPathInput" class="col-sm-2 col-form-label">Your Report</label>
+        <div class="col-md-6" style="bottom: 2rem;padding-top: 2.5rem;">
+            <a th:href="@{/download?filePath={filePath}(filePath=${userconf.reportPath})}"
+               th:utext="${userconf.reportPath.substring(userconf.reportPath.lastIndexOf('/')+1)}"
+               id="formReportPathInput"></a>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: -1rem;"
+         th:if="${userconf != null && userconf.getRole() != null && userconf.reportPath != null}">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formStatusInput" class="col-sm-2 col-form-label">Report Status</label>
+        <div class="col-md-6" style="bottom: 2rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext" type="text"
+                   th:utext="${userconf.getReportStatus().getValue()}"
+                   disabled
+                   id="formStatusInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: -1rem;"
+         th:if="${userconf != null && userconf.getRole() != null && userconf.reviewPath != null}">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formReviewPathInput" class="col-sm-2 col-form-label">Your Review</label>
+        <div class="col-md-6" style="bottom: 2rem;padding-top: 2.5rem;">
+            <a th:href="@{/download?filePath={filePath}(filePath=${userconf.reportPath})}"
+               th:utext="${userconf.reviewPath.substring(userconf.reviewPath.lastIndexOf('/')+1)}"
+               id="formReviewPathInput"></a>
+        </div>
+    </div>
+    <br/>
+    <h5 style="text-decoration: underline;">About this Conference</h5>
+    <label style="height: 50px;">
+        <textarea th:utext="${conference.fullDescription}" style="width: 30rem;border: none;"></textarea>
+    </label>
+    <form method="POST" enctype="multipart/form-data"
+          th:if="${userconf != null && userconf.getRole() != null &&
+          userconf.getRole().getValue() != T(com.conferences.spring.model.UserConferenceRole).ATTENDEE.getValue() &&
+          (userconf.getReportStatus() == null ||
+          userconf.getReportStatus().getValue() == T(com.conferences.spring.model.ReportStatus).REJECTED.getValue())}"
+          th:action="@{/{userId}/conferences/{conferenceId}/uploadreport(userId=${user.id},conferenceId=${conference.id})}">
+        File to upload: <input type="file" name="file">
+        <input type="submit" value="Upload"> Upload
+    </form>
+    <div style="color: brown; padding-top: 1rem;" th:if="${errorMessage}" th:utext="${errorMessage}"/>
+    <br/>
+<!--    <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#participate"-->
+<!--            th:if="${user.getConferencesDTO().size() == 0 ||-->
+<!--                (user.getConferencesDTO.size() != 0 && !user.getConferencesDTO.contains(conference))}">-->
+<!--        Participate-->
+<!--    </button>-->
+
+    <!-- Modal Participate-->
+    <div class="modal fade" id="participate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true" th:object="${userconf}">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100" id="exampleModalLabel">Specify your role</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post"
+                      th:action="@{/{userId}/conferences/{conferenceId}/{action}/(userId=${user.id},
+                conferenceId=${conference.id},action='create')}" th:object="${userconf}" id="myId">
+                    <div class="modal-body">
+                        <select name="educType" class="form-control"
+                                id="formRoleInput">
+                            <option th:each="roles : ${T(com.conferences.spring.model.UserConferenceRole).values()}"
+                                    th:value="${roles}" th:text="${roles.getValue()}"
+                            ></option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveButton">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!--    <form method="post"-->
+<!--          th:if="${user.getConferencesDTO().size() != 0 && user.getConferencesDTO().contains(conference)}"-->
+<!--          th:action="@{/{userId}/conferences/{conferenceId}/{action}/{role}(userId=${user.id}, conferenceId=${conference.id},-->
+<!--          action='delete', role=${userconf.getRole()})}" style="margin-top: -10px;">-->
+<!--        <button type="submit" class="btn btn-primary btn-sm">Cancel Participation</button>-->
+<!--    </form>-->
+
+    <!-- JS code -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            th:attr="nonce=${#httpServletRequest.getAttribute('nonce')}"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+            th:attr="nonce=${#httpServletRequest.getAttribute('nonce')}"
+            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+            th:attr="nonce=${#httpServletRequest.getAttribute('nonce')}"
+            integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+            crossorigin="anonymous"></script>
+    <script>
+        let selectedRole = $("#formRoleInput").find("option:selected").val();
+        $("#formRoleInput").change(function () {
+            selectedRole = $("#formRoleInput").find("option:selected").val();
+
+        });
+        $("#saveButton").click(function () {
+            $("#myId").attr("action", $("#myId").attr("action") + selectedRole);//Will set it
+        });
+    </script>
+    <!--JS below-->
+</div>
+</body>
+</html>

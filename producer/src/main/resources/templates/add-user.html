@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/layout}" lang="en">
+<head>
+    <title th:utext="${title}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="UTF-8">
+    <link th:href="@{/css/core.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<form class="my-overflow" style="padding-top: 7rem; padding-left: 9rem" layout:fragment="content"
+      th:action="@{/users/create}" th:object="${user}" th:method="post">
+    <h2>Register New User</h2>
+    <br/>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="formFirstNameInput" class="col-sm-5 col-form-label"
+                   style="font-size: 20px; padding-left: 0; color: olive;">First Name<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="text"
+                   th:field="*{firstName}" id="formFirstNameInput"/>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="formLastNameInput" class="col-sm-5 col-form-label"
+                   style="font-size: 20px; padding-left: 0; color: olive;">Last Name<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="text"
+                   th:field="*{lastName}" id="formLastNameInput"/>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="formThirdNameInput" class="col-sm-5 col-form-label"
+                   style="font-size: 20px; padding-left: 0; color: olive;">Third Name </label>
+            <input class="form-control" type="text"
+                   th:field="*{thirdName}" id="formThirdNameInput"/>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="formBirthDateInput" class="col-sm-5 col-form-label"
+                   style="font-size: 20px; padding-left: 0; color: olive;">Birth Date<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="date"
+                   th:field="*{dateOfBirth}" id="formBirthDateInput"/>
+        </div>
+        <div class="form-group col-md-4" style="margin-bottom: -1rem;">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formGenderInput" class="col-sm-5 col-form-label">Gender </label>
+            <select name="gender" class="form-control" id="formGenderInput"
+                    th:field="*{gender}">
+                <option th:each="genders : ${T(com.conferences.spring.model.Gender).values()}"
+                        th:value="${genders}" th:text="${genders.value}"></option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formEmailInput" class="col-sm-5 col-form-label">Email<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="email" placeholder="name@example.com"
+                   th:field="*{email}" id="formEmailInput"/>
+        </div>
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formPhoneInput" class="col-sm-5 col-form-label">Phone<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="tel"
+                   th:field="*{phone}" id="formPhoneInput"/>
+        </div>
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formPasswordInput" class="col-sm-5 col-form-label">Password<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="password"
+                   th:field="*{password}" id="formPasswordInput"/>
+        </div>
+    </div>
+    <br/>
+
+    <h2>Education Info</h2>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formUniversityInput" class="col-sm-5 col-form-label">University<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="text"
+                   th:field="*{university}" id="formUniversityInput"/>
+        </div>
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formDepartmentInput" class="col-sm-5 col-form-label">Department</label>
+            <input class="form-control" type="text"
+                   th:field="*{department}" id="formDepartmentInput"/>
+        </div>
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formOrganisationInput" class="col-sm-5 col-form-label">Organisation</label>
+            <input class="form-control" type="text"
+                   th:field="*{organization}" id="formOrganisationInput"/>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formEducStatusInput" class="col-sm-7 col-form-label">Education Status</label>
+            <select name="educStatus" class="form-control"
+                    th:field="*{educationStatus}" id="formEducStatusInput">
+                <option th:each="educStatuses : ${T(com.conferences.spring.model.EducationStatus).values()}"
+                        th:value="${educStatuses}" th:text="${educStatuses.value}"></option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formEducTypeInput" class="col-sm-6 col-form-label">Education Type</label>
+            <select name="educType" class="form-control"
+                    th:field="*{educationType}" id="formEducTypeInput">
+                <option th:each="educTypes : ${T(com.conferences.spring.model.EducationType).values()}"
+                        th:value="${educTypes}" th:text="${educTypes.value}"></option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formGradYearInput" class="col-sm-6 col-form-label">Graduation Year</label>
+            <input class="form-control" type="text"
+                   th:field="*{graduationYear}" id="formGradYearInput"/>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+    <div style="color: brown; padding-top: 1rem;" th:if="${errorMessage}" th:utext="${errorMessage}"/>
+</form>
+</body>
+</html>

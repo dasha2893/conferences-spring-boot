@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/layout}" lang="en">
+<head>
+    <title th:utext="${title}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="UTF-8">
+    <link th:href="@{/css/core.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class="my-overflow" layout:fragment="content" style="padding-top: 6rem; padding-left: 11rem;" th:object="${user}">
+    <h1>List of My Conferences</h1><br/>
+    <div class="dropdown-menu" style="display: contents" th:each="conference,iterState : ${conferences}">
+        <a class="dropdown-item"
+           th:href="@{/{userId}/conferences/{conferenceId}/show/(conferenceId=${conference.id}, userId=${user.id})}"
+           style="width: fit-content;background-color: antiquewhite;"
+           th:utext="${'<h4>' + conference.title + '</h4>' + conference.shortDescription
+           + '<br/>' + #dates.day(conference.startDate) + '-' + #dates.day(conference.endDate) + ' ' +
+           #dates.monthName(conference.endDate) + ' ' + #dates.year(conference.endDate) + '|' + conference.location}"></a>
+        <div class="dropdown-divider" style="width: 30rem;"></div>
+    </div>
+    <span th:if="${hasPrev}"><a th:href="@{/{userId}/myconferences?page={prev}(prev=${prev}, userId=${user.id})}">
+        Prev</a></span>
+    <span th:if="${hasNext}"><a
+            th:href="@{/{userId}/myconferences?page={next}(next=${next}, userId=${user.id})}">Next</a></span>
+    <div style="color: brown; padding-top: 1rem;" th:if="${errorMessage}" th:utext="${errorMessage}"/>
+</div>
+</body>
+</html>

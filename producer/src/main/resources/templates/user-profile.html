@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/layout}" lang="en">
+<head>
+    <title th:utext="${title}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="UTF-8">
+    <link th:href="@{/css/core.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<form class="my-overflow" style="padding-top: 7rem; padding-left: 11rem;" layout:fragment="content"
+      th:action="@{/profile}" th:object="${user}" method="get">
+    <h2 th:utext="${user.lastName + ' ' + user.firstName + ' ' + user.thirdName}"></h2>
+    <div class="form-group row" style="margin-bottom: -1rem;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formBirthDateInput" class="col-sm-2 col-form-label">Birth Date</label>
+        <div class="col-md-4" style="bottom: 1.8rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext" type="text"
+                   th:utext="${user.getDateOfBirth()}" disabled id="formBirthDateInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: -1rem;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formGenderInput" class="col-sm-2 col-form-label">Gender</label>
+        <div class="col-md-4" style="bottom: 2rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext" type="text"
+                   th:utext="${user.gender.getValue()}" disabled id="formGenderInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: -1rem;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formEmailInput" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-md-4" style="bottom: 2rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext" type="text"
+                   th:utext="${user.email}" disabled id="formEmailInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: -1rem;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formPhoneInput" class="col-sm-2 col-form-label">Phone</label>
+        <div class="col-md-4" style="bottom: 2rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext" type="text"
+                   th:utext="${user.phone}" disabled id="formPhoneInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: -1rem;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formRoleInput" class="col-sm-2 col-form-label">Role</label>
+        <div class="col-md-4" style="bottom: 2rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext" type="text"
+                   th:utext="${user.getRolesDTO().iterator().next().getName()}" disabled id="formRoleInput"/>
+        </div>
+    </div>
+    __________________________________________________________________
+    <h3>Education Information</h3>
+    <div class="form-group row" style="margin-bottom: 0;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formUniversityInput" class="col-sm-3 col-form-label">University (Organisation)</label>
+        <div class="col-md-4" style="bottom: 1.5rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext form-control-sm" type="text"
+                   th:utext="${user.university + '(' + user.organization + ')'}" disabled id="formUniversityInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: 0;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formEducDepartInput" class="col-sm-3 col-form-label">Department</label>
+        <div class="col-md-4" style="bottom: 1.5rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext form-control-sm" type="text"
+                   th:utext="${user.department}" disabled
+                   id="formEducDepartInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: 0;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formEducTypeInput" class="col-sm-3 col-form-label">Education Form</label>
+        <div class="col-md-4" style="bottom: 1.5rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext form-control-sm" type="text"
+                   th:utext="${user.educationType.getValue()}"
+                   disabled
+                   id="formEducTypeInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: 0;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formEducStatusInput" class="col-sm-3 col-form-label">Education Status</label>
+        <div class="col-md-4" style="bottom: 1.5rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext form-control-sm" type="text"
+                   th:utext="${user.educationStatus.getValue()}" disabled
+                   id="formEducStatusInput"/>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-bottom: 0;">
+        <label style="padding-left: 1rem; font-size: 20px; text-decoration: underline;"
+               for="formGradYearInput" class="col-sm-3 col-form-label">Graduation Year</label>
+        <div class="col-md-4" style="bottom: 1.5rem;color: olive;font-size: large;">
+            <input class="form-control-plaintext form-control-sm" type="text"
+                   th:utext="${user.graduationYear}" disabled
+                   id="formGradYearInput"/>
+        </div>
+    </div>
+    <br/>
+    <a th:href="@{/users/{userId}/edit(userId=${user.id})}" class="btn btn-primary btn-sm active" role="button"
+       aria-pressed="true">Update Profile</a>
+    <a th:href="@{/{userId}/myrequests(userId=${user.id})}" class="btn btn-secondary btn-sm active" role="button"
+       aria-pressed="true">My Requests</a>
+    <a th:if="${user.getRolesDTO().iterator().next().getName() == T(com.conferences.spring.model.UserRoles).ADMIN.getValue()}"
+       th:href="@{/conferences/add}"
+       class="btn btn-info btn-sm active"
+       role="button" aria-pressed="true"
+       style="visibility: visible">Create Conference</a>
+    <a th:if="${user != null && user.id != null}"
+       th:href="@{/conferences/user}"
+       class="btn btn-warning btn-sm active"
+       role="button" aria-pressed="true"
+       style="visibility: visible">My Conferences</a>
+</form>
+</body>
+</html>
+<!--style="width:63%; padding-bottom: 8px;color: olive; font-size: large;-->

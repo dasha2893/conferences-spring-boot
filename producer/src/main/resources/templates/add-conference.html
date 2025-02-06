@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/layout}" lang="en">
+<head>
+    <title th:utext="${title}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="UTF-8">
+    <link th:href="@{/css/core.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<form class="my-overflow" style="padding-top: 5rem; padding-left: 9rem" layout:fragment="content"
+      th:action="@{/conferences/add}" th:object="${conference}" th:method="post">
+    <h2>Create New Conference</h2>
+    <div class="form-row">
+        <div class="form-group col-md-7">
+            <label for="formTitleInput" class="col-sm-7 col-form-label"
+                   style="font-size: 20px; padding-left: 0; color: olive;">Title<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="text"
+                   th:field="*{title}" id="formTitleInput"/>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="formShDescInput" class="col-sm-6 col-form-label"
+                   style="font-size: 20px; padding-left: 0; color: olive;">Short Description<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="text"
+                   th:field="*{shortDescription}" id="formShDescInput"/>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-10">
+            <label for="formFDescInput" class="col-sm-10 col-form-label"
+                   style="font-size: 20px; padding-left: 0; color: olive;">Full Description</label>
+            <input class="form-control" type="text"
+                   th:field="*{fullDescription}" id="formFDescInput"/>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="formLocationInput" class="col-sm-4 col-form-label"
+                   style="font-size: 20px; padding-left: 0; color: olive;">Location<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="text"
+                   th:field="*{location}" id="formLocationInput"/>
+        </div>
+        <div class="form-group col-md-4" style="margin-bottom: -1rem;">
+            <label for="formOrganiserInput" class="col-sm-4 col-form-label"
+                   style="font-size: 20px; padding-left: 0; color: olive;">Organizer<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="text"
+                   th:field="*{organizer}" id="formOrganiserInput"/>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-7">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formContactsInput" class="col-sm-7 col-form-label">Contacts<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="text"
+                   th:field="*{contacts}" id="formContactsInput"/>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formStartDateInput" class="col-sm-5 col-form-label">Start Date<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="date"
+                   th:field="*{startDate}" id="formStartDateInput"/>
+        </div>
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formEndDateInput" class="col-sm-5 col-form-label">End Date<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="date"
+                   th:field="*{endDate}" id="formEndDateInput"/>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formRegStDateInput" class="col-sm-5 col-form-label">Registration Start Date<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="date"
+                   th:field="*{startRegistration}" id="formRegStDateInput"/>
+        </div>
+        <div class="form-group col-md-4">
+            <label style="font-size: 20px; padding-left: 0; color: olive;"
+                   for="formRegEndDateInput" class="col-sm-5 col-form-label">Registration End Date<font
+                    style="color: red">*</font></label>
+            <input class="form-control" type="date"
+                   th:field="*{endRegistration}" id="formRegEndDateInput"/>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Conference</button>
+    <div style="color: brown; padding-top: 1rem;" th:if="${errorMessage}" th:utext="${errorMessage}"/>
+</form>
+</body>
+</html>

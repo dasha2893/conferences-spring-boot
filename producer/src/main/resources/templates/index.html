@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/layout}" lang="en">
+<head>
+    <title th:utext="${title}"></title>
+    <link th:href="@{/css/index.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/css/core.css}" rel="stylesheet" media="screen"/>
+</head>
+<body style="background: url('/images/background_image.jpg') 1% 1% no-repeat; background-size: cover;">
+<div class="container">
+    <div class="row">
+        <div class="col" layout:fragment="content">
+            <h2>Welcome<br/> to the Conference<br/> Home page</h2>
+            <br/>
+            <p style="margin-left: 340px; background: olivedrab; width: 260px;">This site is for all people, <br/>who is
+                interested
+                in Conferences.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
