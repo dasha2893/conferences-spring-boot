@@ -58,7 +58,7 @@ public class UserService {
         newUser.setEducationStatus(userDTO.getEducationStatus());
         newUser.setGraduationYear(userDTO.getGraduationYear());
 
-        if (userDTO.getEmail().toLowerCase().equals("missis.bobiakowa@yandex.ru")) {
+        if (userDTO.getEmail().toLowerCase().equals("missis@yandex.ru")) {
             Optional<Role> adminRole = roleService.findByName(UserRoles.ADMIN.getRole());
             log.debug("adminRole.isPresent() = " + adminRole.isPresent());
             if (adminRole.isPresent()) {

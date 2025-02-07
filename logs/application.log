@@ -1,0 +1,84 @@
+2025-01-31 17:27:42 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 35876 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-01-31 17:27:42 [main] DEBUG c.conferences.ConferencesApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-01-31 17:27:42 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-31 17:27:45 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 3.051 seconds (JVM running for 3.549)
+2025-01-31 17:30:59 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 36060 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-01-31 17:30:59 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-31 17:31:02 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 2.783 seconds (JVM running for 3.246)
+2025-01-31 17:31:19 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 13052 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-01-31 17:31:19 [main] DEBUG c.conferences.ConferencesApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-01-31 17:31:19 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-31 17:31:22 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 2.95 seconds (JVM running for 3.432)
+2025-01-31 17:47:29 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 25640 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-01-31 17:47:29 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-01-31 17:47:32 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 2.817 seconds (JVM running for 3.28)
+2025-02-03 14:03:46 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 2680 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-02-03 14:03:46 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-03 14:03:49 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 3.712 seconds (JVM running for 4.295)
+2025-02-03 14:18:27 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 15664 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-02-03 14:18:27 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-03 14:18:30 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 2.915 seconds (JVM running for 3.389)
+2025-02-03 14:22:02 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 32600 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-02-03 14:22:02 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-03 14:22:05 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 2.766 seconds (JVM running for 3.217)
+2025-02-03 14:23:29 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 6068 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-02-03 14:23:29 [main] DEBUG c.conferences.ConferencesApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-02-03 14:23:29 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-03 14:23:32 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 2.771 seconds (JVM running for 3.22)
+2025-02-03 15:58:03 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 18480 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-02-03 15:58:03 [main] DEBUG c.conferences.ConferencesApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-02-03 15:58:03 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-03 15:58:06 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 3.157 seconds (JVM running for 3.736)
+2025-02-03 15:58:58 [http-nio-8090-exec-3] DEBUG c.c.controller.UserController - [UserController]processLogin: start
+2025-02-03 15:58:58 [http-nio-8090-exec-3] DEBUG com.conferences.user_consumer.service.UserService - authorizeUser: email: missis.Bobiakowa@yandex.ru
+2025-02-03 15:58:58 [http-nio-8090-exec-3] DEBUG com.conferences.user_consumer.service.UserService - loadUserByUsername: email: missis.Bobiakowa@yandex.ru
+2025-02-03 15:58:58 [http-nio-8090-exec-3] DEBUG c.c.controller.UserController - authUser: User{userId=6, userName='Daria', userLastName='Sharikova', userThirdName='Aleksandrovna', dateOfBirth=1993-11-28, gender=F, phone='+7(931)250-07-62', email='missis.Bobiakowa@yandex.ru', organization='', university='LETI', department='', graduationYear='2017', educationStatus=ENROLLEE, educationType=FULL_TIME}
+2025-02-03 15:58:58 [http-nio-8090-exec-5] DEBUG c.c.controller.UserController - [UserController]showProfile: start
+2025-02-03 15:59:06 [http-nio-8090-exec-9] DEBUG c.c.controller.UserController - [UserController]showProfile: start
+2025-02-03 16:03:58 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 11832 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-02-03 16:03:58 [main] DEBUG c.conferences.ConferencesApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-02-03 16:03:58 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-03 16:04:00 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 2.957 seconds (JVM running for 3.414)
+2025-02-03 16:04:40 [http-nio-8090-exec-8] DEBUG c.c.controller.UserController - [UserController]processLogin: start
+2025-02-03 16:04:40 [http-nio-8090-exec-8] DEBUG com.conferences.user_consumer.service.UserService - authorizeUser: email: missis.Bobiakowa@yandex.ru
+2025-02-03 16:04:40 [http-nio-8090-exec-8] DEBUG com.conferences.user_consumer.service.UserService - loadUserByUsername: email: missis.Bobiakowa@yandex.ru
+2025-02-03 16:04:41 [http-nio-8090-exec-8] DEBUG c.c.controller.UserController - authUser: User{userId=6, userName='Daria', userLastName='Sharikova', userThirdName='Aleksandrovna', dateOfBirth=1993-11-28, gender=F, phone='+7(931)250-07-62', email='missis.Bobiakowa@yandex.ru', organization='', university='LETI', department='', graduationYear='2017', educationStatus=ENROLLEE, educationType=FULL_TIME}
+2025-02-03 16:04:41 [http-nio-8090-exec-3] DEBUG c.c.controller.UserController - [UserController]showProfile: start
+2025-02-03 16:05:03 [kafka-producer-network-thread | conferences-producer-1] ERROR org.apache.kafka.clients.Metadata - [Producer clientId=conferences-producer-1] Metadata response reported invalid topics [$application.kafka.topics.conferences]
+2025-02-03 16:05:03 [http-nio-8090-exec-3] ERROR o.s.k.s.LoggingProducerListener - Exception thrown when sending a message with key='null' and payload='ConferenceDTO{conferenceId=null, title='Conference 5', shortDescription='short description', fullDes...' to topic $application.kafka.topics.conferences:
+org.apache.kafka.common.errors.InvalidTopicException: Invalid topics: [$application.kafka.topics.conferences]
+2025-02-03 16:05:03 [http-nio-8090-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.kafka.KafkaException: Send failed; nested exception is org.apache.kafka.common.errors.InvalidTopicException: Invalid topics: [$application.kafka.topics.conferences]] with root cause
+org.apache.kafka.common.errors.InvalidTopicException: Invalid topics: [$application.kafka.topics.conferences]
+2025-02-03 16:20:58 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 18136 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-02-03 16:20:58 [main] DEBUG c.conferences.ConferencesApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-02-03 16:20:58 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-03 16:21:01 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 2.992 seconds (JVM running for 3.44)
+2025-02-03 17:05:28 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 25280 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-02-03 17:05:28 [main] DEBUG c.conferences.ConferencesApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-02-03 17:05:28 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-03 17:05:30 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 2.942 seconds (JVM running for 3.411)
+2025-02-03 17:05:45 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 33200 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-02-03 17:05:45 [main] DEBUG c.conferences.ConferencesApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-02-03 17:05:45 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-03 17:05:48 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 3.025 seconds (JVM running for 3.498)
+2025-02-03 17:07:32 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 3656 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-02-03 17:07:32 [main] DEBUG c.conferences.ConferencesApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-02-03 17:07:32 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-03 17:07:35 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 2.934 seconds (JVM running for 3.399)
+2025-02-03 17:07:48 [http-nio-8090-exec-5] DEBUG c.c.controller.UserController - [UserController]processLogin: start
+2025-02-03 17:07:48 [http-nio-8090-exec-5] DEBUG com.conferences.user_consumer.service.UserService - authorizeUser: email: missis.Bobiakowa@yandex.ru
+2025-02-03 17:07:48 [http-nio-8090-exec-5] DEBUG com.conferences.user_consumer.service.UserService - loadUserByUsername: email: missis.Bobiakowa@yandex.ru
+2025-02-03 17:07:49 [http-nio-8090-exec-5] DEBUG c.c.controller.UserController - authUser: User{userId=6, userName='Daria', userLastName='Sharikova', userThirdName='Aleksandrovna', dateOfBirth=1993-11-28, gender=F, phone='+7(931)250-07-62', email='missis.Bobiakowa@yandex.ru', organization='', university='LETI', department='', graduationYear='2017', educationStatus=ENROLLEE, educationType=FULL_TIME}
+2025-02-03 17:07:49 [http-nio-8090-exec-8] DEBUG c.c.controller.UserController - [UserController]showProfile: start
+2025-02-03 17:07:58 [http-nio-8090-exec-3] DEBUG c.c.controller.UserController - [UserController]showProfile: start
+2025-02-03 17:09:26 [main] INFO  c.conferences.ConferencesApplication - Starting ConferencesApplication using Java 13.0.14 on Daria with PID 28180 (D:\Personal\MyProjects\conferences-spring-boot\main\target\classes started by missi in D:\Personal\MyProjects\conferences-spring-boot)
+2025-02-03 17:09:26 [main] DEBUG c.conferences.ConferencesApplication - Running with Spring Boot v2.7.18, Spring v5.3.31
+2025-02-03 17:09:26 [main] INFO  c.conferences.ConferencesApplication - No active profile set, falling back to 1 default profile: "default"
+2025-02-03 17:09:28 [main] INFO  c.conferences.ConferencesApplication - Started ConferencesApplication in 2.817 seconds (JVM running for 3.279)
+2025-02-03 17:10:19 [http-nio-8090-exec-5] DEBUG c.c.controller.UserController - [UserController]processLogin: start
+2025-02-03 17:10:19 [http-nio-8090-exec-5] DEBUG com.conferences.user_consumer.service.UserService - authorizeUser: email: missis.Bobiakowa@yandex.ru
+2025-02-03 17:10:19 [http-nio-8090-exec-5] DEBUG com.conferences.user_consumer.service.UserService - loadUserByUsername: email: missis.Bobiakowa@yandex.ru
+2025-02-03 17:10:19 [http-nio-8090-exec-5] DEBUG c.c.controller.UserController - authUser: User{userId=6, userName='Daria', userLastName='Sharikova', userThirdName='Aleksandrovna', dateOfBirth=1993-11-28, gender=F, phone='+7(931)250-07-62', email='missis.Bobiakowa@yandex.ru', organization='', university='LETI', department='', graduationYear='2017', educationStatus=ENROLLEE, educationType=FULL_TIME}
+2025-02-03 17:10:19 [http-nio-8090-exec-3] DEBUG c.c.controller.UserController - [UserController]showProfile: start
+2025-02-03 17:10:52 [http-nio-8090-exec-3] DEBUG c.c.controller.UserController - [UserController]showProfile: start
+2025-02-03 17:10:56 [http-nio-8090-exec-3] DEBUG c.c.controller.UserController - [UserController]showProfile: start
