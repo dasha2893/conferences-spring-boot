@@ -27,8 +27,8 @@ public class UserConferenceService {
         this.userConferenceRestService = userConferenceRestService;
     }
 
-    public List<ConferenceDTO> getConferencesByUser(User user){
-        List<UserConferenceDTO> userConferences = userConferenceRestService.getUserConferences(new UserDTO(user));
+    public List<ConferenceDTO> getConferencesByUser(String userEmail){
+        List<UserConferenceDTO> userConferences = userConferenceRestService.getUserConferences(userEmail);
 
         if(CollectionUtils.isEmpty(userConferences)){
             return Collections.emptyList();
@@ -37,7 +37,7 @@ public class UserConferenceService {
         return userConferences.stream().map(UserConferenceDTO::getConferenceDTO).collect(Collectors.toList());
     }
 
-    public Optional<UserConferenceDTO> findUserConferenceByUserAndConference(UserDTO userDTO, ConferenceDTO conferenceDTO){
-        return userConferenceRestService.findUserConferenceByUserAndConference(userDTO, conferenceDTO);
+    public Optional<UserConferenceDTO> findUserConferenceByUserAndConference(ConferenceDTO conferenceDTO, String userEmail){
+        return userConferenceRestService.findUserConferenceByUserAndConference(conferenceDTO, userEmail);
     }
 }

@@ -3,7 +3,6 @@ package com.conferences.spring.service.rest;
 
 import com.conferences.common.service.dto.ConferenceDTO;
 import com.conferences.common.service.dto.UserConferenceDTO;
-import com.conferences.common.service.dto.UserDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,29 +26,35 @@ public class UserConferenceRestService {
         this.objectMapper = objectMapper;
     }
 
-    public List<UserConferenceDTO> getUserConferences(UserDTO userDTO) {
+    public List<UserConferenceDTO> getUserConferences(String userEmail) {
         Map<String, Object> requestBody = new HashMap<>();
-        requestBody.put("userId", userDTO.getId());
-        requestBody.put("email", userDTO.getEmail());
+        requestBody.put("userEmail", userEmail);
 
-        return restClientService.makePostRequest(userConferenceUrl + "/getByUser",
+        Map<String, List<UserConferenceDTO>> response = restClientService.makePostRequest(userConferenceUrl + "/getByUser",
                 requestBody,
-                new ParameterizedTypeReference<List<UserConferenceDTO>>(){},
-                "No UserConferences for user: " + userDTO.getId());
+                new ParameterizedTypeReference<Map<String, List<UserConferenceDTO>>>() {
+                },
+                "No UserConferences for user: " + userEmail,
+                userEmail);
+
+        if(response.containsKey("conferences")){
+            return response.get("conferences");
+        }
+
+        return List.of();
     }
 
 
 
-    public Optional<UserConferenceDTO> findUserConferenceByUserAndConference(UserDTO userDTO, ConferenceDTO conferenceDTO) {
+    public Optional<UserConferenceDTO> findUserConferenceByUserAndConference(ConferenceDTO conferenceDTO, String userEmail) {
         Map<String, Object> requestBody = new HashMap<>();
-        requestBody.put("userId", userDTO.getId());
-        requestBody.put("email", userDTO.getEmail());
+        requestBody.put("email", userEmail);
         requestBody.put("conferenceId", conferenceDTO.getId());
 
-        return Optional.of(restClientService.makePostRequest(userConferenceUrl + "/getByUserAndConference",
+        return Optional.ofNullable(restClientService.makePostRequest(userConferenceUrl + "/getByUserAndConference",
                 requestBody,
                 UserConferenceDTO.class,
-                "No UserConferences for user: " + userDTO.getId()));
+                "No UserConferences for user: " + userEmail, userEmail));
 
     }
 

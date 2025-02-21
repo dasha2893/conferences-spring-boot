@@ -10,25 +10,25 @@
 <div class=my-overflow style="padding-top: 5rem; padding-left: 11rem;" layout:fragment="content">
     <a class="btn btn-info btn-sm active" role="button"
        aria-pressed="true" style="margin-left: 30rem;"
-       th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.spring.model.UserRoles).ADMIN.getValue()}"
+       th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.common.model.UserRoles).ADMIN.getValue()}"
        th:href="@{/conferences/{conferenceId}/edit}">
         Edit Conference Info
     </a>
     <form method="post"
-          th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.spring.model.UserRoles).ADMIN.getValue()}"
+          th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.common.model.UserRoles).ADMIN.getValue()}"
           th:action="@{/conferences/{conferenceId}/delete(id=${conference.id})}"
           style="margin-top: -31px; margin-left: 21rem;">
         <button type="submit" class="btn btn-primary btn-sm">Delete Conference</button>
     </form>
     <a class="btn btn-info btn-sm" role="button"
        aria-pressed="true" style="margin-left: 14.7rem;margin-top: -58px;"
-       th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.spring.model.UserRoles).ADMIN.getValue()}"
+       th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.common.model.UserRoles).ADMIN.getValue()}"
        th:href="@{/conferences/{conferenceId}/participants}">
         Participants
     </a>
     <a class="btn btn-success btn-sm" role="button"
        aria-pressed="true" style="margin-left: 18.9rem;margin-top: -58px;"
-       th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.spring.model.UserRoles).ADMIN.getValue()}"
+       th:if="${user.id == conference.createdBy && user.getRolesDTO().iterator().next().getName() == T(com.conferences.common.model.UserRoles).ADMIN.getValue()}"
        th:href="@{/exportFile?conferenceId={conferenceId}(conferenceId=${conference.id})}">
         Export .csv
     </a>
@@ -118,9 +118,9 @@
     </label>
     <form method="POST" enctype="multipart/form-data"
           th:if="${userconf != null && userconf.getRole() != null &&
-          userconf.getRole().getValue() != T(com.conferences.spring.model.UserConferenceRole).ATTENDEE.getValue() &&
+          userconf.getRole().getValue() != T(com.conferences.common.model.UserConferenceRole).ATTENDEE.getValue() &&
           (userconf.getReportStatus() == null ||
-          userconf.getReportStatus().getValue() == T(com.conferences.spring.model.ReportStatus).REJECTED.getValue())}"
+          userconf.getReportStatus().getValue() == T(com.conferences.common.model.ReportStatus).REJECTED.getValue())}"
           th:action="@{/{userId}/conferences/{conferenceId}/uploadreport(userId=${user.id},conferenceId=${conference.id})}">
         File to upload: <input type="file" name="file">
         <input type="submit" value="Upload"> Upload
@@ -150,7 +150,7 @@
                     <div class="modal-body">
                         <select name="educType" class="form-control"
                                 id="formRoleInput">
-                            <option th:each="roles : ${T(com.conferences.spring.model.UserConferenceRole).values()}"
+                            <option th:each="roles : ${T(com.conferences.common.model.UserConferenceRole).values()}"
                                     th:value="${roles}" th:text="${roles.getValue()}"
                             ></option>
                         </select>

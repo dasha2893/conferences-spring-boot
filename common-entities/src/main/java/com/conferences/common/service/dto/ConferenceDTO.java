@@ -71,6 +71,10 @@ public class ConferenceDTO {
         this.createdBy = conference.getCreatedBy();
     }
 
+    public ConferenceDTO(Long id){
+        this.id = id;
+    }
+
 
     @Override
     public String toString() {

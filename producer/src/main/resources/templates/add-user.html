@@ -8,7 +8,7 @@
 </head>
 <body>
 <form class="my-overflow" style="padding-top: 7rem; padding-left: 9rem" layout:fragment="content"
-      th:action="@{/users/create}" th:object="${user}" th:method="post">
+      th:action="@{/user/create}" th:object="${user}" th:method="post">
     <h2>Register New User</h2>
     <br/>
     <div class="form-row">
@@ -46,7 +46,7 @@
                    for="formGenderInput" class="col-sm-5 col-form-label">Gender </label>
             <select name="gender" class="form-control" id="formGenderInput"
                     th:field="*{gender}">
-                <option th:each="genders : ${T(com.conferences.spring.model.Gender).values()}"
+                <option th:each="genders : ${T(com.conferences.common.model.Gender).values()}"
                         th:value="${genders}" th:text="${genders.value}"></option>
             </select>
         </div>

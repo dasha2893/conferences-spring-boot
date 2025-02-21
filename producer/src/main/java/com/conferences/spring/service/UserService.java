@@ -1,74 +1,71 @@
 package com.conferences.spring.service;
 
-import com.conferences.common.entity.User;
+
+import com.conferences.common.service.dto.AuthDTO;
 import com.conferences.common.service.dto.UserDTO;
+import com.conferences.spring.config.jwt.JwtTokenStorage;
 import com.conferences.spring.exception.AuthenticationException;
 import com.conferences.spring.service.rest.UserRestService;
+import com.conferences.spring.config.jwt.JwtService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
-@Transactional
 @Slf4j
-public class UserService implements UserDetailsService {
+public class UserService {
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRestService userRestService;
+    private final JwtService jwtService;
+    private final JwtTokenStorage jwtTokenStorage;
 
     @Autowired
-    public UserService(BCryptPasswordEncoder bCryptPasswordEncoder,
-                       UserRestService userRestService) {
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    public UserService(UserRestService userRestService,
+                       JwtService jwtService,
+                       JwtTokenStorage jwtTokenStorage) {
         this.userRestService = userRestService;
+        this.jwtService = jwtService;
+        this.jwtTokenStorage = jwtTokenStorage;
     }
 
-    @Override
-    public User loadUserByUsername(String email) throws UsernameNotFoundException {
-        log.debug("loadUserByUsername: email: {}", email);
-
-        try {
-            UserDTO userDTO = userRestService.getUserByEmail(email);
-            return new User(userDTO.getFirstName(),
-                            userDTO.getLastName(),
-                            userDTO.getThirdName(),
-                            userDTO.getPassword(),
-                            userDTO.getDateOfBirth(),
-                            userDTO.getGender(),
-                            userDTO.getEmail());
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            throw new UsernameNotFoundException("User not found: " + email, e);
-        }
-    }
-
-    public UserDetails authorizeUser(final String email,
-                                     final String password) {
+    public String authorizeUser(final String email,
+                              final String password) {
         log.debug("authorizeUser: email: {}", email);
-        UserDetails loadedUser = loadUserByUsername(email);
-
-        if (!bCryptPasswordEncoder.matches(password, loadedUser.getPassword())) {
+        String jwtToken = userRestService.login(new AuthDTO(email, password));
+        if(jwtToken == null){
             throw new AuthenticationException();
         }
 
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(loadedUser, password, loadedUser.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authToken);
+        List<String> userRoles = jwtService.extractRoles(jwtToken);
+        if(userRoles.isEmpty()){
+            throw new RuntimeException("User doesn't have any role");
+        }
 
-        return loadedUser;
+        log.debug("authorizeUser: jwtToken: {}, userRoles: {}", jwtToken, userRoles);
+        jwtTokenStorage.saveToken(email, jwtToken);
+        return jwtToken;
     }
 
-    public UserDTO encodePassword(UserDTO userDTO){
-        String encodedPass = bCryptPasswordEncoder.encode(userDTO.getPassword());
-        userDTO.setPassword(encodedPass);
-        return userDTO;
+    public void logout(String email){
+        jwtTokenStorage.removeToken(email);
+        SecurityContextHolder.clearContext();
     }
 
+    public UserDTO getUserByEmail(String email){
+        return userRestService.getUserByEmail(email);
+    }
 }

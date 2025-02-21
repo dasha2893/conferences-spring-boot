@@ -11,25 +11,24 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item" th:if="${user == null || user.id == null}">
+                <li class="nav-item" th:if="${user == null || user.getEmail() == null}">
                     <a class="nav-link" href="/login">Login<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item" th:if="${user == null || user.id == null}">
+                <li class="nav-item" th:if="${user == null || user.getEmail() == null}">
                     <a class="nav-link" href="/register">Register<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item" th:if="${user != null && user.id != null}">
+                <li class="nav-item" th:if="${user != null && user.getEmail() != null}">
                     <a class="nav-link" th:href="@{/all-conferences}">All Conferences
                         <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item" th:if="${user != null && user.id != null}">
+                <li class="nav-item" th:if="${user != null && user.getEmail() != null}">
                     <a class="nav-link" th:href="@{/profile}">My Profile
                         <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item" th:if="${user != null && user.id != null}">
+                <li class="nav-item" th:if="${user != null && user.getEmail() != null}">
                     <a class="nav-link" href="javascript:void(0);" id="logout-link" th:attr="nonce=${nonce}">Logout
                         <span class="sr-only">(current)</span></a>
                     <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;">
-                        <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
                     </form>
                 </li>
             </ul>
@@ -43,23 +42,23 @@
         </div>
     </nav>
     <script th:src="'https://code.jquery.com/jquery-3.2.1.slim.min.js'"
-            th:attr="nonce=${#httpServletRequest.getAttribute('nonce')}"
+            th:attr="nonce=${nonce}"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
     <script th:src="'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'"
-            th:attr="nonce=${#httpServletRequest.getAttribute('nonce')}"
+            th:attr="nonce=${nonce}"
             integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
             crossorigin="anonymous"></script>
     <script th:src="'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'"
-            th:attr="nonce=${#httpServletRequest.getAttribute('nonce')}"
+            th:attr="nonce=${nonce}"
             integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
             crossorigin="anonymous"></script>
-    <script th:attr="nonce=${#httpServletRequest.getAttribute('nonce')}">
+    <script th:attr="nonce=${nonce}">
         $("#searchButton").click(function () {
             $("#searchFormId").attr("action", $("#searchFormId").attr("action") + $("#searchInput").val())
         })
     </script>
-    <script th:attr="nonce=${#httpServletRequest.getAttribute('nonce')}">
+    <script th:attr="nonce=${nonce}">
         document.getElementById('logout-link').addEventListener('click', function(event) {
             event.preventDefault();
             document.getElementById('logout-form').submit();

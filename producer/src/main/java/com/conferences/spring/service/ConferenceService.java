@@ -20,29 +20,29 @@ public class ConferenceService {
         this.conferenceRestService = conferenceRestService;
     }
 
-    public Optional<ConferenceDTO> getConferenceByTitle(String title) {
+    public Optional<ConferenceDTO> getConferenceByTitle(String title, String userEmail) {
         try {
-            return Optional.of(conferenceRestService.getConferenceByTitle(title));
+            return Optional.of(conferenceRestService.getConferenceByTitle(title, userEmail));
         } catch (RuntimeException e) {
             log.error(e.getMessage());
             return Optional.empty();
         }
     }
 
-    public Optional<ConferenceDTO> getConferenceById(Long id) {
+    public Optional<ConferenceDTO> getConferenceById(Long id, String userEmail) {
         try{
-           return Optional.of(conferenceRestService.getConferenceById(id));
+           return Optional.of(conferenceRestService.getConferenceById(id, userEmail));
         }catch (RuntimeException e){
             log.error(e.getMessage());
             return Optional.empty();
         }
     }
 
-    public void deleteConference(Long id){
-        conferenceRestService.deleteConference(id);
+    public void deleteConference(Long id, String userEmail){
+        conferenceRestService.deleteConference(id, userEmail);
     }
 
-    public List<ConferenceDTO> getConferencesAfterYesterday(){
-        return conferenceRestService.getConferencesAfterYesterday();
+    public List<ConferenceDTO> getConferencesAfterYesterday(String userEmail){
+        return conferenceRestService.getConferencesAfterYesterday(userEmail);
     }
 }

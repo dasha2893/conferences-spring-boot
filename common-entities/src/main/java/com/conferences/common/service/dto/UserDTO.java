@@ -70,6 +70,7 @@ public class UserDTO {
 
     private List<ConferenceDTO> conferencesDTO;
 
+
     public UserDTO(User user) {
         this.id = user.getUserId();
         this.firstName = user.getFirstName();
@@ -87,6 +88,10 @@ public class UserDTO {
         this.educationStatus = user.getEducationStatus();
         this.graduationYear = user.getGraduationYear();
         this.rolesDTO = user.getUserRoles().stream().map(UserRole::getRole).map(RoleDTO::new).collect(Collectors.toList());
+    }
+
+    public UserDTO(String email) {
+        this.email = email;
     }
 
 

@@ -31,6 +31,11 @@ public class UserRole implements Serializable, GrantedAuthority {
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 
+    public UserRole(User user, Role role) {
+        this.user = user;
+        this.role = role;
+    }
+
     @Override
     public String getAuthority() {
         return "ROLE_" + getRole().getName();

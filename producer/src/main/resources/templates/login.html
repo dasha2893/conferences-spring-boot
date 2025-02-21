@@ -24,7 +24,6 @@
             <input type="password" class="form-control" id="exampleInputPassword1" th:field="*{password}">
         </div>
     </div>
-    <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
     <button type="submit" class="btn btn-primary">Login</button>
     <div style="color: brown; padding-top: 1rem;" th:if="${errorMessage}" th:utext="${errorMessage}"></div>
 </form>

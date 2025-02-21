@@ -28,6 +28,11 @@ public class Role implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
     private Set<UserRole> userRoles;
 
+    public Role(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "Role{" +

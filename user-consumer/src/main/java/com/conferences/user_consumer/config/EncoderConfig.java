@@ -1,4 +1,4 @@
-package com.conferences.spring.config;
+package com.conferences.user_consumer.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

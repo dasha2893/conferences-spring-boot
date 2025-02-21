@@ -9,6 +9,7 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.support.MessageBuilder;
 
 
+import java.nio.charset.StandardCharsets;
 import java.util.function.Consumer;
 
 @Slf4j
@@ -47,7 +48,7 @@ public class KafkaDataSender implements DataSender {
                         .setHeader("action", action)
                         .build())
                 .addCallback(result -> {
-                    log.info("Conference id: {} was sent, offset: {}", conferenceDTO.getId(), result.getRecordMetadata().offset());
+                    log.info("Conference: {} was sent, offset: {}", conferenceDTO, result.getRecordMetadata().offset());
                 }, ex -> {
                     log.error("topic: {}, conference: {}, exception: {}", topic, conferenceDTO, ex.getMessage());
                 });

@@ -23,20 +23,20 @@ public class ConferenceRestService {
         this.restClientService = restClientService;
     }
 
-    public ConferenceDTO getConferenceByTitle(String title) {
-        return restClientService.makeGetRequest(conferenceUrl + "/getByTitle/" + title, ConferenceDTO.class, "Conference Not Found:" + title);
+    public ConferenceDTO getConferenceByTitle(String title, String userEmail) {
+        return restClientService.makeGetRequest(conferenceUrl + "/getByTitle/" + title, ConferenceDTO.class, "Conference Not Found:" + title, userEmail);
     }
 
-    public ConferenceDTO getConferenceById(Long id) {
-        return restClientService.makePostRequest(conferenceUrl + "/getById", id, ConferenceDTO.class, "Conference Not Found:" + id);
+    public ConferenceDTO getConferenceById(Long id, String userEmail) {
+        return restClientService.makePostRequest(conferenceUrl + "/getById", id, ConferenceDTO.class, "Conference Not Found:" + id, userEmail);
     }
 
-    public void deleteConference(Long id) {
-        restClientService.makeDeleteRequest(conferenceUrl + "/delete/" + id, "Conference Not Found:" + id);
+    public void deleteConference(Long id, String userEmail) {
+        restClientService.makeDeleteRequest(conferenceUrl + "/delete/" + id, "Conference Not Found:" + id, userEmail);
     }
 
-    public List<ConferenceDTO> getConferencesAfterYesterday(){
-        return restClientService.makeGetRequest(conferenceUrl + "/getAll", new ParameterizedTypeReference<List<ConferenceDTO>>() {}, "Conferences Not Found");
+    public List<ConferenceDTO> getConferencesAfterYesterday(String userEmail){
+        return restClientService.makeGetRequest(conferenceUrl + "/getAll", new ParameterizedTypeReference<List<ConferenceDTO>>() {}, "Conferences Not Found", userEmail);
     }
 
 }
